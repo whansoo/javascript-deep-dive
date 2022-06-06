@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<input type="text" id="input-debounce"> debounce 적용: <span id="disp-debounce"></span><br>
+<input type="text" id="input"> debounce 미적용: <span id="no-debounce"></span>
+<script>
+   
+    function debounce(callback, limit = 100) {
+    let timeout
+    return function(...args) {
+        clearTimeout(timeout)
+        timeout = setTimeout(() => {
+            callback.apply(this, args)
+        }, limit)
+    }
+}
+let debounceCount = 0;
+let nodebounceCount = 0;
+
+const $inputDebounce = document.querySelector("#input-debounce");
+const $dispDebounce = document.querySelector("#disp-debounce");
+const $nodebounce = document.querySelector("#no-debounce");
+const $input = document.querySelector('#input');
+
+const onInput = (e) => {
+ $nodebounce.textContent = ++nodebounceCount;
+ console.log('글자입력', $nodebounce.textContent);
+}
+$input.addEventListener('input', onInput);
+
+
+
+
+$inputDebounce.addEventListener(
+  "keyup",
+  debounce(function () {
+    $dispDebounce.textContent = ++debounceCount;
+    console.log('글자입력', $dispDebounce.textContent);
+  }, 100)
+);
+
+</script>
+</body>
+</html>
