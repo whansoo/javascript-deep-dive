@@ -1,0 +1,44 @@
+<script>
+    
+    let user = {
+         name: "Jone",
+         surname: "Smith",
+     }
+     user.name = "Pete";
+     delete user.name; 
+     console.log(user)
+      
+     // 객체에 프로퍼티가 하나도 없는 경우 true, 그렇지 않은 경우 false를 반환해주는 함수 isEmpty(obj)를 만들어 보세요.
+     let obj = {
+      
+     }
+     obj["8:30"] = "get up";
+    console.log(obj)
+     function isEmpty(obj) {
+         for(let key in obj) {
+           return false;
+         }
+         return true;
+     }
+    console.log(isEmpty(obj))
+
+    //const와 함께 선언한 객체를 변경하는 게 가능할까요? 생각을 공유해주세요!
+    const user = {
+    name: "John"
+    };
+     // 아래 코드는 에러 없이 실행될까요? 네 실행 됩니다. 
+     user.name = "Pete"; */
+     //프로퍼티 합계 구하기
+     let salaries = {
+        John: 100,
+        Ann: 160,
+        Pete: 130
+        };
+
+        let sum = 0;
+        for (let key in salaries) {
+        sum += salaries[key];
+        }
+
+        alert(sum); // 390
+</script>
